@@ -48,8 +48,8 @@ void elevator_process(int id, SharedData *shared) {
         // Serve current floor if arrived
         if (e->current_floor == e->target_floor && e->target_floor != -1) {
             // Clear the request
-            int req_dir = (e->direction == 1) ? 0 : 1;
-            shared->floor_requests[e->current_floor][req_dir] = 0;
+            shared->floor_requests[e->current_floor][0] = 0;
+            shared->floor_requests[e->current_floor][1] = 0;
             printf("Elevator %d served floor %d\n", id, e->current_floor);
             e->target_floor = -1;
         }
